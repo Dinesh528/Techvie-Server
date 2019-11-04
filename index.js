@@ -20,10 +20,10 @@ app.use(cors());
 //app.use(bodyParser=urlencoded({extended: true}));
 var Router = express.Router();
 //app.use(authentication)
-app.use('/api',appRoute);
-app.use('/api',userRoute);
-app.use('/api',projectRoute);
-app.use('/api',Connections);
+app.use('/',appRoute);
+app.use('/',userRoute);
+app.use('/',projectRoute);
+app.use('/',Connections);
 
 //app Routes 
 //appRoute.init(Router);
