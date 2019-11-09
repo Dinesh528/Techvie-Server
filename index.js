@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const app = express();
 const path = require('path');
 const log = console.log;
+const stage = process.env.NODE_ENV;
 //const PORT = process.env.PORT || 4001;
 var cors = require('cors');
 const appRoute =  require('./Routes/postRoutes');
@@ -17,7 +18,7 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://CreativeStellars:2fEf
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 app.use(cors());
-//app.use(bodyParser=urlencoded({extended: true}));
+app.use(bodyParser=urlencoded({extended: true}));
 var Router = express.Router();
 //app.use(authentication)
 app.use('/',appRoute);
@@ -31,7 +32,7 @@ app.use('/',Connections);
 mongoose.Promise = global.Promise;
 
 const PORT = process.env.PORT || 4001;
-app.listen(PORT, () => {
-    console.log(`Our app is running on port ${ PORT }`);
+app.listen(stage.PORT, () => {
+    console.log(`Our app is running on port ${ stage.PORT }`);
 
 });
